@@ -22,6 +22,8 @@ public class InGameMenu : MonoBehaviour
         if (isGameOver)
         {
             gameOverMenu.SetActive(true);
+            gameManger.isPaused = true;
+            Time.timeScale = 0;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

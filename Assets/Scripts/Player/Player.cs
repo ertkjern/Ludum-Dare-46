@@ -82,4 +82,5 @@ public class Player : MonoBehaviour
             torchSprite.transform.localPosition = newTorchPositon;
         }
     }
+
 }

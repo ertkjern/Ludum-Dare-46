@@ -25,7 +25,6 @@ public class TorchAnimator : MonoBehaviour
 
         float timeLeftPercentage = timeLeft / maxTime;
 
-        Debug.Log(timeLeftPercentage);
         _animation.SetFloat("percentageLeft", timeLeftPercentage);
     }
 }
