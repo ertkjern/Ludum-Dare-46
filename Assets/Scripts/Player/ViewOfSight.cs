@@ -40,11 +40,11 @@ public class ViewOfSight : MonoBehaviour
         {
             lineOfSight.sprite = view[3];
         }
-        else if(timeLeftPercentage < 0.20f && timeLeftPercentage > 0.1f)
+        else if(timeLeftPercentage < 0.20f && timeLeftPercentage > 0.10f)
         {
             lineOfSight.sprite = view[4];
         }
-        else if(timeLeftPercentage < 0.03f)
+        else if(timeLeftPercentage < 0.10f)
         {
             lineOfSight.sprite = view[5];
         }

@@ -4,8 +4,11 @@ using UnityEngine.SceneManagement;
 public class InGameMenu : MonoBehaviour
 {
     public GameObject inGameMenu;
+    public GameObject gameOverMenu;
+
     private GameManager gameManger;
     private bool isOpen;
+    private bool isGameOver;
 
     private void Start()
     {
@@ -15,6 +18,11 @@ public class InGameMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGameOver = gameManger.IsGameOver;
+        if (isGameOver)
+        {
+            gameOverMenu.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isOpen)
@@ -34,7 +42,7 @@ public class InGameMenu : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (isOpen)
+            if (isOpen || isGameOver)
             {
                 gameManger.isPaused = false;
                 isOpen = false;
