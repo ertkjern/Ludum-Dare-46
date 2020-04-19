@@ -5,10 +5,12 @@ public class InGameMenu : MonoBehaviour
 {
     public GameObject inGameMenu;
     public GameObject gameOverMenu;
+    public GameObject victoryMenu;
 
     private GameManager gameManger;
     private bool isOpen;
     private bool isGameOver;
+    private bool isVictory; 
 
     private void Start()
     {
@@ -19,7 +21,14 @@ public class InGameMenu : MonoBehaviour
     void Update()
     {
         isGameOver = gameManger.IsGameOver;
-        if (isGameOver)
+        isVictory = gameManger.IsVictory;
+        if (isVictory)
+        {
+            victoryMenu.SetActive(true);
+            gameManger.isPaused = true;
+            Time.timeScale = 0;
+        }
+        if (isGameOver || isVictory)
         {
             gameOverMenu.SetActive(true);
             gameManger.isPaused = true;

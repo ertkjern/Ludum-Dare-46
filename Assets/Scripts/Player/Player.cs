@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
         }
     }
 
+
     // Lose a life, but wait one second before loosing another
     private IEnumerator LooseLife()
     {

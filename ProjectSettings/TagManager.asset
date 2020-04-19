@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - MatchBox
   - Enemy
+  - Choppa
   layers:
   - Default
   - TransparentFX
