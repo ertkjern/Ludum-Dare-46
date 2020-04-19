@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             bool hasSpawned = false;
+            // make sure all objects are spawned.
             while (!hasSpawned)
             {
                 float randomX = Random.Range(leftBoundX, rightBoundX);

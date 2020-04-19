@@ -19,11 +19,6 @@ public class Victory : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.IsVictory || gameManager.isGameOver || gameManager.isPaused)
-        {
-            audioSoruce.volume = 0.0f;
-        }
-
         if (!gameManager.IsVictory || !gameManager.isGameOver || !gameManager.isPaused)
         {
             float distance = Vector2.Distance(_player.transform.position, transform.position);
