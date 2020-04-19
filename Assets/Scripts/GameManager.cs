@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     public int life = 3;
     public bool isGameOver = false;
     public int numberOfMatchBoxesToSpawn = 30;
+    public int numberOfSpidersToSpawn = 100;
 
     public GameObject matchBox;
+    public GameObject spider;
+
     public GameObject topBound;
     public GameObject bottomBound;
     public GameObject leftBound;
@@ -19,7 +22,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnMatches();
+        SpawnItem(matchBox, numberOfMatchBoxesToSpawn);
+        SpawnItem(spider, numberOfSpidersToSpawn);
     }
 
     private void Update()
@@ -46,18 +50,22 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void SpawnMatches()
+    private void SpawnItem(GameObject prefab, int amount)
     {
         float topBoundY = topBound.transform.position.y;
         float bottomBoundY = bottomBound.transform.position.y;
         float leftBoundX = leftBound.transform.position.x;
         float rightBoundX = rightBound.transform.position.x;
 
-        for (int i = 0; i < numberOfMatchBoxesToSpawn; i++)
+        for (int i = 0; i < amount; i++)
         {
             float randomX = Random.Range(leftBoundX, rightBoundX);
             float randomY = Random.Range(bottomBoundY, topBoundY);
-            Instantiate(matchBox, new Vector2(randomX, randomY), transform.rotation);
+            // Simple hack to avoid spiders to spawn near player
+            if ((randomX > 3.0f || randomX < -3.0f) && (randomY > 3.0f || randomY < -3.0f))
+            {
+                Instantiate(prefab, new Vector2(randomX, randomY), transform.rotation);
+            }
         }
     }
 

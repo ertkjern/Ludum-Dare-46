@@ -8,6 +8,7 @@ TagManager:
   - InGameMenu
   - GameManager
   - MatchBox
+  - Enemy
   layers:
   - Default
   - TransparentFX

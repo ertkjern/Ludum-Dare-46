@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private GameManager gameManger;
     private SpriteRenderer playerSprite;
     private SpriteRenderer torchSprite;
+
+    private bool isInvinsible; // just to avoid the player from loosing several lifes at once. 
     
     // Start is called before the first frame update
     void Start()
@@ -81,6 +83,28 @@ public class Player : MonoBehaviour
             newTorchPositon.x = -0.16f;
             torchSprite.transform.localPosition = newTorchPositon;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("Spider"))
+        {
+            if (!isInvinsible)
+            {
+                StartCoroutine(LooseLife());
+            }
+        }
+    }
+
+    // Lose a life, but wait one second before loosing another
+    private IEnumerator LooseLife()
+    {
+        isInvinsible = true;
+        playerSprite.color = new Color(255.0f, 0.0f, 0.0f, 255.0f); // Red
+        gameManger.Life--;
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = new Color(255.0f, 255.0f, 255.0f, 255.0f); // White (normal colors)
+        isInvinsible = false;
     }
 
 }
