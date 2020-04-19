@@ -25,11 +25,11 @@ public class NoiseMeter : MonoBehaviour
         }
         else if (distance < 0.35f)
         {
-            noiseMeter.color = colors[1];
+            noiseMeter.color = colors[3];
         }
         else
         {
-            noiseMeter.color = colors[3];
+            noiseMeter.color = colors[1];
         }
     }
 }
